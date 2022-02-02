@@ -42,11 +42,11 @@ def add_item(request, cls):
         return render(request, 'inv/add_new.html', {'form' : form})
 
 
-def add_laptop(request):
+def add_volunteer(request):
     return add_item(request, VolunteerForm)
 
 
-def add_desktop(request):
+def add_participate(request):
     return add_item(request, ParticipateForm)
 
 
@@ -67,15 +67,15 @@ def edit_item(request, pk, model, cls):
 
 
 
-def edit_laptop(request, pk):
+def edit_volunteer(request, pk):
     return edit_item(request, pk, Volunteers, VolunteerForm)
 
 
-def edit_desktop(request, pk):
+def edit_participate(request, pk):
     return edit_item(request, pk, Participates, ParticipateForm)
 
 
-def delete_laptop(request, pk):
+def delete_volunteer(request, pk):
 
     template = 'inv/index.html'
     Volunteers.objects.filter(id=pk).delete()
@@ -89,7 +89,7 @@ def delete_laptop(request, pk):
     return render(request, template, context)
 
 
-def delete_desktop(request, pk):
+def delete_participate(request, pk):
 
     template = 'inv/index.html'
     Participates.objects.filter(id=pk).delete()

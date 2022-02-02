@@ -8,15 +8,15 @@ urlpatterns = [
     path(r'participates/', display_participates, name="display_participates"),
    
 
-    path(r'add_laptop/', add_laptop, name="add_laptop"),
-    path(r'add_desktop/', add_desktop, name="add_desktop"),
+    path(r'add_volunteer/', add_volunteer, name="add_volunteer"),
+    path(r'add_participate/', add_participate, name="add_participate"),
     
-    path(r'laptops/edit_item/(?P<pk>\d+)/', edit_laptop, name="edit_laptop"),
-    path(r'desktops/edit_item/(?P<pk>\d+)/', edit_desktop, name="edit_desktop"),
+    path(r'volunteers/edit_item/(?P<pk>\d+)/', edit_volunteer, name="edit_volunteer"),
+    path(r'participates/edit_item/(?P<pk>\d+)/', edit_participate, name="edit_participate"),
     
 
-    path(r'laptops/delete/(?P<pk>\d+)/', delete_laptop, name="delete_laptop"),
-    path(r'desktops/delete/(?P<pk>\d+)/', delete_desktop, name="delete_desktop"),
+    path(r'volunteers/delete/(?P<pk>\d+)/', delete_volunteer, name="delete_volunteer"),
+    path(r'participates/delete/(?P<pk>\d+)/', delete_participate, name="delete_participate"),
    
 
 ]
