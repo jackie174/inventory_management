@@ -10,31 +10,24 @@ from .forms import *
 def index(request):
     return render(request, 'inv/index.html')
 
-def display_laptops(request):
-    items = Laptops.objects.all()
+def display_volunteers(request):
+    items = Volunteers.objects.all()
     context = {
         'items': items,
-        'header': 'Laptops',
+        'header': 'volunteers',
     }
     return render(request, 'inv/index.html', context)
 
 
-def display_desktops(request):
-    items = Desktops.objects.all()
+def display_participates(request):
+    items = Participates.objects.all()
     context = {
         'items': items,
-        'header': 'Desktops',
+        'header': 'participates',
     }
     return render(request, 'inv/index.html', context)
 
 
-def display_mobiles(request):
-    items = Mobiles.objects.all()
-    context = {
-        'items': items,
-        'header': 'Mobiles',
-    }
-    return render(request, 'inv/index.html', context)
 
 def add_item(request, cls):
     if request.method == "POST":
@@ -50,15 +43,13 @@ def add_item(request, cls):
 
 
 def add_laptop(request):
-    return add_item(request, LaptopForm)
+    return add_item(request, VolunteerForm)
 
 
 def add_desktop(request):
-    return add_item(request, DesktopForm)
+    return add_item(request, ParticipateForm)
 
 
-def add_mobile(request):
-    return add_item(request, MobileForm)
 
 
 def edit_item(request, pk, model, cls):
@@ -77,23 +68,19 @@ def edit_item(request, pk, model, cls):
 
 
 def edit_laptop(request, pk):
-    return edit_item(request, pk, Laptops, LaptopForm)
+    return edit_item(request, pk, Volunteers, VolunteerForm)
 
 
 def edit_desktop(request, pk):
-    return edit_item(request, pk, Desktops, DesktopForm)
-
-
-def edit_mobile(request, pk):
-    return edit_item(request, pk, Mobiles, MobileForm)
+    return edit_item(request, pk, Participates, ParticipateForm)
 
 
 def delete_laptop(request, pk):
 
     template = 'inv/index.html'
-    Laptops.objects.filter(id=pk).delete()
+    Volunteers.objects.filter(id=pk).delete()
 
-    items = Laptops.objects.all()
+    items = Volunteers.objects.all()
 
     context = {
         'items': items,
@@ -105,23 +92,9 @@ def delete_laptop(request, pk):
 def delete_desktop(request, pk):
 
     template = 'inv/index.html'
-    Desktops.objects.filter(id=pk).delete()
+    Participates.objects.filter(id=pk).delete()
 
-    items = Desktops.objects.all()
-
-    context = {
-        'items': items,
-    }
-
-    return render(request, template, context)
-
-
-def delete_mobile(request, pk):
-
-    template = 'inv/index.html'
-    Mobiles.objects.filter(id=pk).delete()
-
-    items = Mobiles.objects.all()
+    items = Participates.objects.all()
 
     context = {
         'items': items,
